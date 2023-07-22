@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+     <%-include('layouts/header');-%>
+    <body>
+        <!-- Navigation-->
+        <%- include('layouts/navbar');-%>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Blog Site</h1>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container">
+            <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+            <% for (var i = 0; i < blogposts.length; i++) { %>
+            <div class="post-preview">
+                <a href="/post/<%= blogposts[i]._id
+                %>">
+            <h2 class="post-title">
+            <%= blogposts[i].title %>
+            </h2>
+            <h3 class="post-subtitle">
+            <%= blogposts[i].body %>
+            </h3>
+            </a>
+            <p class="post-meta">Posted by
+                <a href="#"><%= blogposts[i].username %></a>
+                on <%= blogposts[i].datePosted.toDateString() %></p>
+            </div>
+            <hr>
+            <% } %>
+            
+                  
+                    <!-- Pager-->
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+      
+        <%- include('layouts/footer');-%>
+        <%- include('layouts/scripts');-%>
+    </body>
+</html>
